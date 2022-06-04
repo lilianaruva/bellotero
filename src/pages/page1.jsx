@@ -27,6 +27,13 @@ const Page1 = () => {
         <div className="titlePage1">
           <h1>{title}</h1>
         </div>
+        <div className="reviewContainer">
+          <div className="reviewTitleContainer">
+            <div className="reviewName">Pete Zahut</div>
+            <div className="reviewPosition">Chef @ Maniak</div>
+          </div>
+          <div className="review">“It's funny what memory does, isn't it? My favorite holiday tradition might not have happened more than once or twice. But because it is such a good memory, so encapsulating of everything I love about the holidays, in my mind it happened every year. Without fail"</div>
+        </div>
       </div>
     </>
   );

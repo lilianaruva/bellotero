@@ -41,4 +41,40 @@
     color: #ffffff;
     margin: 0.5rem;
   }
+
+  .reviewContainer {
+    display: flex;
+    justify-content: space-between;
+    background: #ffffff;
+    margin-top: 5rem;
+    padding: 2rem;
+    color: #161616;
+    max-width: 1002px;
+
+    .review {
+      font-size: 24px;
+      line-height: 32px;
+      letter-spacing: 0;
+      font-weight: bold;
+      width: 565px;
+    }
+
+    .reviewTitleContainer {
+      display: flex;
+      flex-direction: column;
+  
+      .reviewName {
+        font-size: 32px;
+        font-weight: bold;
+      }
+  
+      .reviewPosition {
+        font-size: 14px;
+        color: #a5a5a5;
+      }
+    }
+  }
+
+
+
 }
