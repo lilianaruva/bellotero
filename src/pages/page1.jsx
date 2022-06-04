@@ -4,8 +4,9 @@ import axios from "axios";
 const Page1 = () => {
   const [title, setTitle] = useState();
   const [reviews, setReviews] = useState();
+  const [reviewPosition, setReviewPosition] = useState(0);
 
-  const getMenu = async () => {
+  const getInfo = async () => {
     await axios
       .get(
         "https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/page1.json"
@@ -17,8 +18,26 @@ const Page1 = () => {
       });
   };
 
+  const reviewController = (position) => {
+    if (reviews?.length === undefined) return <></>;
+    else
+      return (
+        <>
+          <div className="reviewContainer">
+            <div className="reviewTitleContainer">
+              <div className="reviewName">{reviews[position]?.name}</div>
+              <div className="reviewPosition">
+                {reviews[position]?.position}
+              </div>
+            </div>
+            <div className="review">{reviews[position]?.comment}</div>
+          </div>
+        </>
+      );
+  };
+
   useEffect(() => {
-    getMenu();
+    getInfo();
   }, []);
 
   return (
@@ -27,12 +46,33 @@ const Page1 = () => {
         <div className="titlePage1">
           <h1>{title}</h1>
         </div>
-        <div className="reviewContainer">
-          <div className="reviewTitleContainer">
-            <div className="reviewName">Pete Zahut</div>
-            <div className="reviewPosition">Chef @ Maniak</div>
+        <div className="reviewOverride">
+          {reviewController(reviewPosition)}
+          <div className="reviewController">
+            <div className="reviewCount">
+              {reviewPosition + 1}/{reviews?.length}
+            </div>
+            <div
+              className="reviewArrows"
+              onClick={() =>
+                reviewPosition - 1 < 0
+                  ? ""
+                  : setReviewPosition(reviewPosition - 1)
+              }
+            >
+              v
+            </div>
+            <div
+              className="reviewArrows"
+              onClick={() =>
+                reviewPosition < reviews?.length - 1
+                  ? setReviewPosition(reviewPosition + 1)
+                  : ""
+              }
+            >
+              v
+            </div>
           </div>
-          <div className="review">“It's funny what memory does, isn't it? My favorite holiday tradition might not have happened more than once or twice. But because it is such a good memory, so encapsulating of everything I love about the holidays, in my mind it happened every year. Without fail"</div>
         </div>
       </div>
     </>
