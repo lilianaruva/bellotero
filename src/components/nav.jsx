@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import logo from "../bellotero.svg";
 
