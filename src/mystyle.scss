@@ -149,5 +149,33 @@
     flex-direction: column;
     width: 50%;
     padding-right: 5rem;
+
+    .row {
+      display: flex;
+    }
+
+    .col {
+      flex: 1;
+    }
+
+    .estimateTitle {
+      display: flex;
+      font-size: 72px;
+      letter-spacing: 1px;
+      text-align: right;
+      color: #071eb3;
+      font-weight: medium;
+
+      p {
+        font-size: 36px;
+        line-height: 40px;
+        letter-spacing: 0.77px;
+      }
+    }
+
+    .estimateSubtitle {
+      font-size: 14px;
+      font-weight: bold;
+    }
   }
 }
