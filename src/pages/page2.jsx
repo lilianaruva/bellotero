@@ -3,6 +3,7 @@ import InputRange from "react-input-range";
 
 const Page2 = () => {
   const [value, setValue] = useState(0);
+  const [employees, setEmployees] = useState(1);
 
   const rangeSlide = () => {
     setValue(value + 1);
@@ -25,18 +26,19 @@ const Page2 = () => {
           </div>
         </div>
         <div className="section">
-          <div className="row rangeContainer">
+          <div className="row rangeInputContainer">
             <div className="col rangeTitle">Monthly ingredient spending</div>
             <div className="dobleInput">
               <input type="text" id="subdomain" value="$" disabled />
-              <input type="text" id="subdomaintwo" value={value} />
+              <input
+                type="text"
+                id="subdomaintwo"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+              />
             </div>
           </div>
           <div className="row rangeContainer">
-            <div className="col rangeTitle">Monthly ingredient spending</div>
-            <input type="text" className="fullTimeInput" value={value} />
-          </div>
-          <div className="row">
             <InputRange
               draggableTrack={false}
               allowSameValues={false}
@@ -48,9 +50,33 @@ const Page2 = () => {
               onChangeComplete={(args) => console.log(args)}
             />
           </div>
+          <div className="row rangeInputContainer">
+            <div className="col rangeTitle">
+              Full-time employees that process invoices
+            </div>
+            <input
+              type="text"
+              className="fullTimeInput"
+              value={employees}
+              onChange={(e) => setEmployees(e.target.value)}
+            />
+          </div>
+          <div className="row rangeContainer">
+            <InputRange
+              draggableTrack={false}
+              allowSameValues={false}
+              step={1}
+              minValue={0}
+              maxValue={10}
+              value={employees}
+              onChange={setEmployees}
+              onChangeComplete={(args) => console.log(args)}
+            />
+          </div>
           <div className="row">
             <div className="col estimateTitle">
-              <p>$</p>8.611
+              <p>$</p>
+              {employees}
             </div>
             <div className="col estimateTitle">
               <p>$</p>
