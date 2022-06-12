@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import InputRange from "react-input-range";
 
 const Page2 = () => {
   const [value, setValue] = useState(0);
@@ -26,23 +27,34 @@ const Page2 = () => {
         <div className="section">
           <div className="row rangeContainer">
             <div className="col rangeTitle">Monthly ingredient spending</div>
-            <div className="col estimateSubtitle">
-             
-            </div>
-            <div>
+            <div className="dobleInput">
               <input type="text" id="subdomain" value="$" disabled />
-              <input type="text" id="subdomaintwo" />
+              <input type="text" id="subdomaintwo" value={value} />
             </div>
           </div>
+          <div className="row rangeContainer">
+            <div className="col rangeTitle">Monthly ingredient spending</div>
+            <input type="text" className="fullTimeInput" value={value} />
+          </div>
           <div className="row">
-            <input class="range" type="range"></input>
+            <InputRange
+              draggableTrack={false}
+              allowSameValues={false}
+              step={1}
+              minValue={0}
+              maxValue={100}
+              value={value}
+              onChange={setValue}
+              onChangeComplete={(args) => console.log(args)}
+            />
           </div>
           <div className="row">
             <div className="col estimateTitle">
               <p>$</p>8.611
             </div>
             <div className="col estimateTitle">
-              <p>$</p>36.611
+              <p>$</p>
+              {value}
             </div>
           </div>
           <div className="row">
