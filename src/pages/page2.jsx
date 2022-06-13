@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import InputRange from "react-input-range";
 
 const Page2 = () => {
   const [value, setValue] = useState(0);
   const [employees, setEmployees] = useState(1);
+  const [title, setTitle] = useState();
+  const [resume, setResume] = useState();
 
-  const rangeSlide = () => {
-    setValue(value + 1);
+  const getInfo = async () => {
+    await axios
+      .get(
+        "https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/page2.json"
+      )
+      .then((response) => {
+        const res = response.data.calculator;
+        setTitle(res.title);
+        setResume(res.description);
+      });
   };
+
+  useEffect(() => {
+    getInfo();
+  }, []);
 
   return (
     <>
@@ -15,15 +30,10 @@ const Page2 = () => {
         <div className="sectionLeft">
           <div className="titlePage2">
             <h1>
-              <span>Save more with Bellotero.io</span>
+              <span>{title}</span>
             </h1>
           </div>
-          <div className="reviewOverride">
-            With Bellotero.io you save time and money make real-time decisions
-            that boost your business and your bottom line. Get less wrongfully
-            blocked payments, save time on bookkeeping and no need to worry
-            about safety.{" "}
-          </div>
+          <div className="resumeBellotero">{resume}</div>
         </div>
         <div className="section">
           <div className="row rangeInputContainer">
