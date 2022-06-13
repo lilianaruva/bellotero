@@ -24,7 +24,9 @@ const Nav = () => {
   return (
     <>
       <div className="nav">
-        <img src={logo} className="App-logo" alt="logo" />
+        <Link to="/">
+          <img src={logo} className="App-logo" alt="logo" />
+        </Link>
         <div className="navItem">
           {menu?.map((item) => (
             <Link to={item?.route}>{item?.text}</Link>
